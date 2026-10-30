@@ -1,0 +1,27 @@
+:root { color-scheme: light; font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; color: #192334; background: #f3f6fb; }
+* { box-sizing: border-box; }
+body { margin: 0; }
+.page { width: min(760px, calc(100% - 32px)); margin: 56px auto; }
+header { margin: 0 0 28px; }
+.eyebrow { color: #5269c9; font-size: .75rem; font-weight: 750; letter-spacing: .12em; }
+h1 { margin: 8px 0; font-size: clamp(2rem, 7vw, 3rem); letter-spacing: -.045em; }
+.intro { color: #5d6879; font-size: 1.08rem; }
+.card { background: #fff; border: 1px solid #e3e8f1; border-radius: 16px; box-shadow: 0 8px 28px #25344d0a; padding: 26px; margin: 18px 0; }
+h2 { margin: 0 0 8px; font-size: 1.2rem; }
+.card > p { color: #687487; margin-top: 0; }
+label { display: block; font-weight: 650; font-size: .9rem; margin: 20px 0 8px; }
+.upload-row { display: flex; align-items: center; flex-wrap: wrap; gap: 12px; }
+input[type=file] { flex: 1; min-width: 230px; padding: 10px; border: 1px solid #dbe1ec; border-radius: 9px; }
+textarea { width: 100%; resize: vertical; padding: 12px; border: 1px solid #dbe1ec; border-radius: 9px; font: inherit; }
+button { border: 0; border-radius: 9px; padding: 11px 16px; background: #5269c9; color: white; font: inherit; font-weight: 650; cursor: pointer; }
+button:hover { background: #4056b2; }
+button:disabled { background: #aab3cc; cursor: not-allowed; }
+.loaded { margin: 18px 0 0 !important; color: #24694a !important; }
+.document-list { margin: 8px 0 0; padding-left: 22px; color: #24694a; line-height: 1.6; }
+.answer { margin-top: 22px; padding: 18px; border-radius: 10px; background: #f4f6ff; border-left: 4px solid #687ee0; }
+.answer h3 { margin: 0 0 8px; font-size: 1rem; }
+.answer p { white-space: pre-wrap; line-height: 1.6; margin: 0; }
+.notice { padding: 12px 15px; border-radius: 9px; background: #fff2df; color: #704e16; }
+.notice.success { background: #e8f7ee; color: #24694a; }
+footer { color: #778194; font-size: .82rem; text-align: center; margin: 28px 0; }
+@media (max-width: 520px) { .page { margin: 32px auto; } .card { padding: 20px; } .upload-row button { width: 100%; } }

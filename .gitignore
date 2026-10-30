@@ -1,0 +1,29 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+*.egg-info/
+.pytest_cache/
+coverage.xml
+htmlcov/
+
+# Environment and secrets
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+
+# Local uploads and model cache
+uploads/
+instance/
+*.pdf
+.cache/
+sentence_transformers/
+hf_cache/
+
+# Editor and OS files
+.DS_Store
+.vscode/
+.idea/

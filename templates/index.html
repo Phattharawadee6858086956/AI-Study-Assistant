@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>AI Study Assistant</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <main class="page">
+    <header>
+      <p class="eyebrow">YOUR PERSONAL STUDY PARTNER</p>
+      <h1>AI Study Assistant</h1>
+      <p class="intro">Upload your notes, then ask questions. Answers are based on your document.</p>
+    </header>
+
+    {% with messages = get_flashed_messages(with_categories=true) %}
+      {% if messages %}<section class="notices" aria-live="polite">
+        {% for category, message in messages %}<p class="notice {{ category }}">{{ message }}</p>{% endfor %}
+      </section>{% endif %}
+    {% endwith %}
+
+    <section class="card">
+      <h2>1. Add a study document</h2>
+      <p>Choose one or more text-based PDFs or TXT files (up to 12 MB per upload).</p>
+      <form action="{{ url_for('upload') }}" method="post" enctype="multipart/form-data">
+        <label for="documents">Documents</label>
+        <div class="upload-row"><input id="documents" name="documents" type="file" accept=".pdf,.txt,application/pdf,text/plain" multiple required>
+          <button type="submit">Upload document</button></div>
+      </form>
+      {% if documents %}
+        <div class="loaded"><strong>Ready to study {{ documents|length }} document(s):</strong>
+          <ul class="document-list">{% for document in documents %}<li>{{ document.name }}</li>{% endfor %}</ul>
+        </div>
+      {% endif %}
+    </section>
+
+    <section class="card">
+      <h2>2. Ask a question</h2>
+      <p>Ask about a concept, definition, or detail in your document.</p>
+      <form action="{{ url_for('ask') }}" method="post">
+        <label for="question">Your question</label>
+        <textarea id="question" name="question" rows="3" placeholder="For example: What are the main stages of photosynthesis?" required></textarea>
+        <button type="submit" {% if not documents %}disabled{% endif %}>Get an answer</button>
+      </form>
+      {% if answer %}<article class="answer"><h3>Study answer</h3><p>{{ answer }}</p></article>{% endif %}
+    </section>
+    <footer>Powered by sentence-transformers and Ollama · Your uploaded documents stay in memory while this server runs.</footer>
+  </main>
+</body>
+</html>
